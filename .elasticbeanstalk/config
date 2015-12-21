@@ -1,0 +1,13 @@
+[global]
+ApplicationName=xiaoquapp
+DevToolsEndpoint=git.elasticbeanstalk.ap-southeast-2.amazonaws.com
+EnvironmentName=xiaoquapp-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=C:\Users\Yan\Code\xiaoquapp\.elasticbeanstalk\optionsettings.xiaoquapp-env
+RdsEnabled=No
+Region=ap-southeast-2
+ServiceEndpoint=https://elasticbeanstalk.ap-southeast-2.amazonaws.com
+SolutionStack=64bit Amazon Linux 2015.09 v2.0.4 running PHP 5.5
+
