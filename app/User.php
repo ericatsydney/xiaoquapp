@@ -11,29 +11,39 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract,
-                                    AuthorizableContract,
-                                    CanResetPasswordContract
+  AuthorizableContract,
+  CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+  use Authenticatable, Authorizable, CanResetPassword;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
+  /**
+   * The database table used by the model.
+   *
+   * @var string
+   */
+  protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['name', 'email', 'password','resident_id','wechat_id','wechat_name'];
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = ['name', 'email', 'password', 'resident_id', 'wechat_id', 'wechat_name'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = ['password', 'remember_token'];
+  /**
+   * The attributes excluded from the model's JSON form.
+   *
+   * @var array
+   */
+  protected $hidden = ['password', 'remember_token'];
+
+  /**
+   * Each user belong to one resident.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   */
+  public function resident()
+  {
+    return $this->belongsTo('App/Resident');
+  }
 }

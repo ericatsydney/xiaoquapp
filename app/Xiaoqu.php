@@ -14,4 +14,14 @@ class Xiaoqu extends Model
     'lat',
     'lng'
   ];
+
+  /**
+   * Each xiaoqu could have many residents.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function residents()
+  {
+    return $this->hasMany('App\Resident');
+  }
 }
