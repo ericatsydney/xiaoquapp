@@ -22,21 +22,27 @@
     {!! csrf_field() !!}
 
     <div>
-      邮件
+      Name
+      <input type="text" name="name" value="{{ old('name') }}">
+    </div>
+
+    <div>
+      Email
       <input type="email" name="email" value="{{ old('email') }}">
     </div>
 
     <div>
-      密码
-      <input type="password" name="password" id="password">
+      Password
+      <input type="password" name="password">
     </div>
 
     <div>
-      <input type="checkbox" name="remember" class="hidden">
+      Confirm Password
+      <input type="password" name="password_confirmation">
     </div>
 
     <div>
-      <button type="submit">登录</button>
+      <button type="submit">Register</button>
     </div>
   </form>
 @endsection
