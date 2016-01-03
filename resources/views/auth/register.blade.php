@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <form method="POST" action="/resident/verify">
+  <form id="verify_resident" method="POST" action="/resident/verify">
     {!! csrf_field() !!}
     <div>
       房号
@@ -18,25 +18,25 @@
     </div>
   </form>
 
-  {{--<form method="POST" action="/auth/login">--}}
-    {{--{!! csrf_field() !!}--}}
+  <form id="user_register" method="POST" action="/auth/login" style="display:none">
+    {!! csrf_field() !!}
 
-    {{--<div>--}}
-      {{--邮件--}}
-      {{--<input type="email" name="email" value="{{ old('email') }}">--}}
-    {{--</div>--}}
+    <div>
+      邮件
+      <input type="email" name="email" value="{{ old('email') }}">
+    </div>
 
-    {{--<div>--}}
-      {{--密码--}}
-      {{--<input type="password" name="password" id="password">--}}
-    {{--</div>--}}
+    <div>
+      密码
+      <input type="password" name="password" id="password">
+    </div>
 
-    {{--<div>--}}
-      {{--<input type="checkbox" name="remember" class="hidden">--}}
-    {{--</div>--}}
+    <div>
+      <input type="checkbox" name="remember" class="hidden">
+    </div>
 
-    {{--<div>--}}
-      {{--<button type="submit">登录</button>--}}
-    {{--</div>--}}
-  {{--</form>--}}
+    <div>
+      <button type="submit">登录</button>
+    </div>
+  </form>
 @endsection
