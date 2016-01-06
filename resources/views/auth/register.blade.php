@@ -18,31 +18,31 @@
     </div>
   </form>
 
-  <form id="user_register" method="POST" action="/auth/login" style="display:none">
+  <form id="user_register" method="POST" action="/auth/register"  style="display:none">
     {!! csrf_field() !!}
 
     <div>
-      Name
+      昵称
       <input type="text" name="name" value="{{ old('name') }}">
     </div>
 
     <div>
-      Email
+      电邮
       <input type="email" name="email" value="{{ old('email') }}">
     </div>
 
     <div>
-      Password
+      密码
       <input type="password" name="password">
     </div>
 
     <div>
-      Confirm Password
+      确认密码
       <input type="password" name="password_confirmation">
     </div>
 
     <div>
-      <button type="submit">Register</button>
+      <button type="submit">创建账号</button>
     </div>
   </form>
 @endsection

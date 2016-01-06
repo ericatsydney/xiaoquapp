@@ -22,7 +22,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
-Route::resource('user','UserController');
+//Route::resource('user','UserController');
 
 Route::post('resident/verify',  'ResidentController@verify');
 Route::get('resident/create',  function() {
