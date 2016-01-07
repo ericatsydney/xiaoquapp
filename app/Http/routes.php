@@ -25,6 +25,4 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //Route::resource('user','UserController');
 
 Route::post('resident/verify',  'ResidentController@verify');
-Route::get('resident/create',  function() {
-  return view('resident.create');
-} );
+Route::get('resident/create',  'ResidentController@create');

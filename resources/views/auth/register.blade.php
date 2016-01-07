@@ -18,7 +18,7 @@
     </div>
   </form>
 
-  <form id="user_register" method="POST" action="/auth/register"  style="display:none">
+  <form id="user_register" method="POST" action="/auth/register"  style="display: none;">
     {!! csrf_field() !!}
 
     <div>

@@ -8,9 +8,16 @@ use App\Resident;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class ResidentController extends Controller
 {
+
+  public function __construct()
+  {
+    $this->middleware('auth', ['except' => ['verify']]);
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -28,7 +35,7 @@ class ResidentController extends Controller
    */
   public function create()
   {
-    //
+    return view('resident.create');
   }
 
   /**
@@ -107,7 +114,12 @@ class ResidentController extends Controller
         'found' => true,
         'resident_id' => $result->id
       );
+      return $return;
     }
-    return $return;
+    else {
+      Session::flash('alert-class', 'alert-danger');
+      Session::flash('flash_message', '对不起，没有找到该住户信息，请重新输入。');
+      return redirect('/auth/register');
+    }
   }
 }

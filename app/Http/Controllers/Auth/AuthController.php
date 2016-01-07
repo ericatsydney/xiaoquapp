@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -71,13 +72,43 @@ class AuthController extends Controller
   {
     $validator = $this->registerValidator(Input::all());
     if ($validator->fails()) {
-      dd('请按输入规则输入');
+      $messages = $validator->errors();
+
+      $name_messages = '请按下面格式输入：';
+      foreach ($messages->get('name') as $message) {
+        $name_messages .= $message . ' ';
+      }
+
+      $email_messages = '';
+      foreach ($messages->get('email') as $message) {
+        $email_messages .= $message . ' ';
+      }
+
+      $password_messages = '';
+      foreach ($messages->get('password') as $message) {
+        $password_messages .= $message . ' ';
+      }
+
+      $password_confirmation_messages = '';
+      foreach ($messages->get('password_confirmation') as $message) {
+        $password_confirmation_messages .= $message . ' ';
+      }
+
+      Session::flash('alert-class', 'alert-danger');
+      Session::flash('flash_message', $name_messages
+         . $email_messages
+         . $password_messages
+         . $password_confirmation_messages);
+
+      return redirect('auth/register');
     }
     User::create([
       'name' => Input::get('name'),
       'email' => Input::get('email'),
       'password' => bcrypt(Input::get('password')),
     ]);
+    Session::flash('alert-class', 'alert-success');
+    Session::flash('flash_message', '账号已成功创建，请输入账号密码登录');
     return redirect('/auth/login');
   }
 
@@ -94,8 +125,14 @@ class AuthController extends Controller
 
     // if the validator fails, redirect back to the form
     if ($validator->fails()) {
-//      return redirect('/auth/login');
-      dd('请按输入规则输入');
+      $messages = $validator->errors();
+      $str_messages = '请按下面格式输入：';
+      foreach ($messages->all('') as $message) {
+        $str_messages .= $message . ' ';
+      }
+      Session::flash('alert-class', 'alert-danger');
+      Session::flash('flash_message', $str_messages);
+      return redirect('/auth/login');
     } else {
 
       // create our user data for the authentication
@@ -111,6 +148,8 @@ class AuthController extends Controller
         // redirect them to the secure section or whatever
         // return Redirect::to('secure');
         // for now we'll just echo success (even though echoing in a controller is bad)
+        Session::flash('alert-class', 'alert-success');
+        Session::flash('flash_message', '登录成功');
         return redirect('/resident/create');
 
       } else {
