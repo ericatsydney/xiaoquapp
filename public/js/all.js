@@ -25,6 +25,9 @@ jQuery( document ).ready( function( $ ) {
           $('#verify_resident button[type=submit]').fadeOut();
           $('#user_register').slideDown();
         }
+        else {
+          $(".ajax-message").append('<span>'+ data.errors +'</span>').addClass('in')
+        }
       },
       'json'
     );
@@ -36,6 +39,5 @@ jQuery( document ).ready( function( $ ) {
     // Prevent the form from actually submitting in browser.
     return false;
   } );
-
 } );
 

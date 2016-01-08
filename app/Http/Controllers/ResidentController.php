@@ -105,21 +105,17 @@ class ResidentController extends Controller
   {
     $return = array(
       'found' => false,
-      'resident_id' => null
+      'resident_id' => null,
+      'errors' => ''
     );
     $result = Resident::where(['unit_number' => $request->unit_number, 'identity' => $request->identity])->first();
 
     if (isset($result)) {
-      $return = array(
-        'found' => true,
-        'resident_id' => $result->id
-      );
-      return $return;
+      $return['found'] = true;
+      $return['resident_id'] = $result->id;
+    }else {
+      $return['errors'] = '对不起，没有找到该住户信息，请重新输入。';
     }
-    else {
-      Session::flash('alert-class', 'alert-danger');
-      Session::flash('flash_message', '对不起，没有找到该住户信息，请重新输入。');
-      return redirect('/auth/register');
-    }
+    return $return;
   }
 }

@@ -12,6 +12,10 @@
       {{--{% endfor %}--}}
     </div>
   @endif
+    <div class='ajax-message alert alert-danger collapse'>
+      <button type='button' class='close' data-dismiss='alert'
+              aria-hidden='true'>&times;</button>
+    </div>
   @yield('content')
 </div>
 </body>
