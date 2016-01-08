@@ -1,25 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
-  <form method="POST" action="/auth/login">
-    {!! csrf_field() !!}
+  <div class='row'>
+    <div class='col-xs-12 col-md-4 col-md-offset-4 form-wrapper'>
+      <h1>MOKO登录</h1>
 
-    <div>
-      Email
-      <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+      <form method='POST' action='/auth/login'>
+        {!! csrf_field() !!}
 
-    <div>
-      Password
-      <input type="password" name="password" id="password">
-    </div>
+        <div class='form-group'>
+          <label>电邮</label>
+          <input type='email' name='email'  class='form-control'>
+        </div>
 
-    <div>
-      <input type="checkbox" name="remember"> Remember Me
-    </div>
+        <div class='form-group'>
+          <label>密码</label>
+          <input type='password' name='password' id='password'  class='form-control'>
+        </div>
 
-    <div>
-      <button type="submit">Login</button>
+        <div>
+          <button type='submit'  class='btn btn-primary btn-lg btn-block'>登录</button>
+        </div>
+      </form>
     </div>
-  </form>
+    <!-- end of form-wrapper -->
+  </div> <!-- end of row -->
 @endsection

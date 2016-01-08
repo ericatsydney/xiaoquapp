@@ -22,6 +22,7 @@ jQuery( document ).ready( function( $ ) {
       function( data ) {
         //do something with data/response returned by server
         if (data.found) {
+          $('#verify_resident button[type=submit]').fadeOut();
           $('#user_register').slideDown();
         }
       },
