@@ -15,7 +15,7 @@ class ResidentController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['verify']]);
+//    $this->middleware('auth', ['except' => ['verify']]);
   }
 
   /**
