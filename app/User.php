@@ -46,4 +46,12 @@ class User extends Model implements AuthenticatableContract,
   {
     return $this->belongsTo('App/Resident');
   }
+
+  /**
+   * @return bool
+   */
+  public function isAManager()
+  {
+    return true;
+  }
 }

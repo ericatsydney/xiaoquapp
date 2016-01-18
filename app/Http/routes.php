@@ -29,4 +29,4 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 //Route::resource('user','UserController');
 
 Route::post('resident/verify',  'ResidentController@verify');
-Route::get('resident/create',  'ResidentController@create');
+Route::get('resident/create', ['middleware' => 'manager', 'uses' => 'ResidentController@create']);
