@@ -16,13 +16,13 @@
         <a href="/admin"><i class="fa fa-dashboard fa-fw"></i> 后台首页</a>
       </li>
       <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 系统管理<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/resident/create">新建住户</a>
+            <a href="/xiaoqu/create">新建小区</a>
           </li>
           <li>
-            <a href="morris.html">Morris.js Charts</a>
+            <a href="/resident/create">新建住户</a>
           </li>
         </ul>
         <!-- /.nav-second-level -->

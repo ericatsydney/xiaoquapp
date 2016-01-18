@@ -26,7 +26,7 @@ class XiaoquController extends Controller
      */
     public function create()
     {
-        //
+        return view('xiaoqu.create');
     }
 
     /**
