@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Xiaoqu;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -37,7 +38,9 @@ class XiaoquController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+//        return $input;
+        Xiaoqu::create($input);
     }
 
     /**

@@ -28,9 +28,10 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 //Route::resource('user','UserController');
 
+Route::post('xiaoqus',  'XiaoquController@store');
 Route::post('resident/verify',  'ResidentController@verify');
 
 Route::group(['middleware'=>'manager'], function() {
-  Route::get('resident/create',  'ResidentController@create');
-  Route::get('xiaoqu/create',  'XiaoquController@create');
+  Route::get('residents/create',  'ResidentController@create');
+  Route::get('xiaoqus/create',  'XiaoquController@create');
 });

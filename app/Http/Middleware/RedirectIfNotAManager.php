@@ -16,8 +16,7 @@ class RedirectIfNotAManager
    */
   public function handle($request, Closure $next)
   {
-
-    if ( ! $request->user()->isAManager()) {
+    if (Auth::check() && ! $request->user()->isAManager()) {
       return redirect('/admin');
     }
 

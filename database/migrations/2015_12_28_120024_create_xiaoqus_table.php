@@ -17,6 +17,7 @@ class CreateXiaoqusTable extends Migration
       $table->string('title');
       $table->string('province');
       $table->string('city');
+      $table->integer('postcode');
       $table->string('address')->unique();
       $table->decimal('lat', 11, 8);
       $table->decimal('lng', 11, 8);
