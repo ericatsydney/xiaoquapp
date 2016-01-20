@@ -17,7 +17,8 @@ class XiaoquController extends Controller
      */
     public function index()
     {
-        //
+        $xiaoqus = Xiaoqu::all();
+        return view('xiaoqu.index', compact('xiaoqus'), ['pageHeaderText' => '小区管理', 'panelHeadingText' => '小区列表']);
     }
 
     /**
@@ -27,7 +28,7 @@ class XiaoquController extends Controller
      */
     public function create()
     {
-        return view('xiaoqu.create');
+        return view('xiaoqu.create', ['pageHeaderText' => '小区管理', 'panelHeadingText' => '新建小区']);
     }
 
     /**
@@ -39,8 +40,9 @@ class XiaoquController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-//        return $input;
         Xiaoqu::create($input);
+        session()->flash('flash_message', '小区已成功创建!');
+        return redirect('/xiaoqus/index');
     }
 
     /**
@@ -62,7 +64,8 @@ class XiaoquController extends Controller
      */
     public function edit($id)
     {
-        //
+        $xiaoqu = Xiaoqu::findOrFail($id);
+        return view('xiaoqu.edit', compact('xiaoqu'), ['pageHeaderText' => '小区管理', 'panelHeadingText' => '更改小区']);
     }
 
     /**
@@ -74,7 +77,11 @@ class XiaoquController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $xiaoqu = Xiaoqu::findOrFail($id);
+
+        $xiaoqu->update($request->all());
+
+        return redirect('/xiaoqus/index');
     }
 
     /**

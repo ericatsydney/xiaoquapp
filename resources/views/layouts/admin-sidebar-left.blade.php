@@ -19,7 +19,7 @@
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 系统管理<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/xiaoqus/create">小区管理</a>
+            <a href="/xiaoqus/index">小区管理</a>
           </li>
           <li>
             <a href="/residents/create">住户管理</a>
