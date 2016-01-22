@@ -42,6 +42,12 @@ Route::patch('xiaoqus/{id}',  'XiaoquController@update');
 
 // Resident routes.
 Route::get('residents/index',  'ResidentController@index');
+Route::get('residents/{id}',   'ResidentController@show');
+Route::get('residents/{id}/edit',   'ResidentController@edit');
+Route::put('residents/{id}',  'ResidentController@update');
+Route::patch('residents/{id}',  'ResidentController@update');
 Route::post('residents',  'ResidentController@store');
 Route::post('resident/verify',  'ResidentController@verify');
 
+// Users routes
+Route::get('users/index',  'Auth\AuthController@index');

@@ -161,4 +161,10 @@ class AuthController extends Controller
 
     }
   }
+
+  public function index()
+  {
+    $users = User::all();
+    return view('auth.index', compact('users'), ['pageHeaderText' => '用户管理', 'panelHeadingText' => '用户列表', 'contentType' => 'users']);
+  }
 }

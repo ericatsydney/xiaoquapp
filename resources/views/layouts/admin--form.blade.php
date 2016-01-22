@@ -17,7 +17,7 @@
 
             <div class="pull-right">
               <div class="btn-group">
-                <a href="/xiaoqus/create" type="button" class="btn btn-default btn-xs">
+                <a href="/{{ $contentType }}/create" type="button" class="btn btn-default btn-xs">
                   添加
                   <i class="fa fa-plus"></i>
                 </a>

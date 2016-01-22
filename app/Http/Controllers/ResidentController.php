@@ -27,7 +27,7 @@ class ResidentController extends Controller
   public function index()
   {
     $residents = Resident::all();
-    return view('resident.index', compact('residents'), ['pageHeaderText' => '住户管理', 'panelHeadingText' => '住户列表']);
+    return view('resident.index', compact('residents'), ['pageHeaderText' => '住户管理', 'panelHeadingText' => '住户列表', 'contentType' => 'residents']);
   }
 
   /**
@@ -38,7 +38,7 @@ class ResidentController extends Controller
   public function create()
   {
     $xiaoqus = Xiaoqu::all(['id', 'title']);
-    return view('resident.create', compact('xiaoqus'));
+    return view('resident.create', compact('xiaoqus'), ['pageHeaderText' => '住户管理', 'panelHeadingText' => '住户列表', 'contentType' => 'residents']);
   }
 
   /**
@@ -74,7 +74,10 @@ class ResidentController extends Controller
    */
   public function edit($id)
   {
-    //
+    $resident = Resident::findOrFail($id);
+    $xiaoqus = Xiaoqu::all(['id', 'title']);
+    $xiaoqu_id = $resident->xiaoqu_id;
+    return view('resident.edit', compact('resident', 'xiaoqus', 'xiaoqu_id'), ['pageHeaderText' => '住户管理', 'panelHeadingText' => '更改住户信息', 'contentType' => 'residents']);
   }
 
   /**
@@ -86,7 +89,11 @@ class ResidentController extends Controller
    */
   public function update(Request $request, $id)
   {
-    //
+    $resident = Resident::findOrFail($id);
+
+    $resident->update($request->all());
+
+    return redirect('/residents/index');
   }
 
   /**

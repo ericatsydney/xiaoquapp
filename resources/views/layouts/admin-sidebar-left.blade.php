@@ -22,10 +22,10 @@
             <a href="/xiaoqus/index">小区管理</a>
           </li>
           <li>
-            <a href="/residents/create">住户管理</a>
+            <a href="/residents/index">住户管理</a>
           </li>
           <li>
-            <a href="/user/list">用户管理</a>
+            <a href="/users/index">用户管理</a>
           </li>
         </ul>
         <!-- /.nav-second-level -->
