@@ -18,21 +18,23 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form role="form">
+              <form role="form" method="POST" action="/residents">
+              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
                   <label>小区管理</label>
-                  <select class="form-control">
-                    <option>珠江帝景湾</option>
-                    <option>怡康华庭</option>
+                  <select class="form-control" name="xiaoqu_id">
+                    @foreach ($xiaoqus as $xiaoqu)
+                    <option value="{{ $xiaoqu->id }} ">{{ $xiaoqu->title }}</option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group">
                   <label>房号</label>
-                  <input class="form-control" placeholder="例：紫荆庭402">
+                  <input class="form-control" placeholder="例：紫荆庭402" name="unit_number">
                 </div>
                 <div class="form-group">
                   <label>户主身份证后9位数字/字母</label>
-                  <input class="form-control" placeholder="例：12345678x">
+                  <input class="form-control" placeholder="例：12345678x" name="identity">
                 </div>
                 <button type="submit" class="btn btn-default">递交</button>
                 <button type="reset" class="btn btn-default">重设</button>

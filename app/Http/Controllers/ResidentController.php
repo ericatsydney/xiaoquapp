@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VerifyResidentRequest;
+use App\Xiaoqu;
 use Illuminate\Http\Request;
 use App\Resident;
 
@@ -25,7 +26,8 @@ class ResidentController extends Controller
    */
   public function index()
   {
-    //
+    $residents = Resident::all();
+    return view('resident.index', compact('residents'), ['pageHeaderText' => '住户管理', 'panelHeadingText' => '住户列表']);
   }
 
   /**
@@ -35,7 +37,8 @@ class ResidentController extends Controller
    */
   public function create()
   {
-    return view('resident.create');
+    $xiaoqus = Xiaoqu::all(['id', 'title']);
+    return view('resident.create', compact('xiaoqus'));
   }
 
   /**
@@ -46,7 +49,10 @@ class ResidentController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $input = $request->all();
+    Resident::create($input);
+    session()->flash('flash_message', '新住户已成功创建!');
+    return redirect('/residents/index');
   }
 
   /**

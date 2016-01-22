@@ -27,7 +27,6 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//Route::resource('user','UserController');
 Route::group(['middleware'=>'manager'], function() {
   Route::get('residents/create',  'ResidentController@create');
   Route::get('xiaoqus/create',  'XiaoquController@create');
@@ -38,7 +37,11 @@ Route::get('xiaoqus/index',  'XiaoquController@index');
 Route::get('xiaoqus/{id}',   'XiaoquController@show');
 Route::get('xiaoqus/{id}/edit',   'XiaoquController@edit');
 Route::post('xiaoqus',  'XiaoquController@store');
+Route::put('xiaoqus/{id}',  'XiaoquController@update');
+Route::patch('xiaoqus/{id}',  'XiaoquController@update');
 
 // Resident routes.
+Route::get('residents/index',  'ResidentController@index');
+Route::post('residents',  'ResidentController@store');
 Route::post('resident/verify',  'ResidentController@verify');
 

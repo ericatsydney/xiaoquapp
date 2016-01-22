@@ -3,15 +3,15 @@
   {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => '例：珠江帝景湾']) !!}
 </div>
 <div class="form-group">
-  <label>省份</label>
-  <select class="form-control" name='province'>
-    <option>广东</option>
-    <option>上海</option>
-    <option>北京</option>
-    <option>浙江</option>
-    <option>江苏</option>
-    <option>山东</option>
-  </select>
+  {!! Form::label('province', '省份') !!}
+  {!! Form::select('province',
+      ['gd' => '广东',
+      'sh' => '上海',
+      'bj' => '北京',
+      'zj' => '浙江',
+      'js' => '江苏',
+      'sd' => '山东'],
+   null, ['class' => 'form-control']) !!}
 </div>
 <div class="form-group">
   {!! Form::label('city', '城市') !!}
