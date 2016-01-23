@@ -14,8 +14,8 @@ class AddResidentFieldsUsersTable extends Migration
     {
         Schema::table('users', function ($table) {
             $table->string('resident_id');
-            $table->string('wechat_id')->unique();
-            $table->string('wechat_name')->unique();
+            $table->string('wechat_id');
+            $table->string('wechat_name');
         });
     }
 
