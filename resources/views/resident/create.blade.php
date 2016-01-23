@@ -1,7 +1,7 @@
 @extends('layouts.admin--form')
 
 @section('form')
-  {!! Form::open(['url' => '/xiaoqus']) !!}
+  {!! Form::open(['url' => '/residents']) !!}
   <div class="form-group">
     {!! Form::label('xiaoqu_id', '所在小区') !!}
     <select class="form-control" name="xiaoqu_id">

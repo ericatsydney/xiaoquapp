@@ -13,7 +13,7 @@ class AddResidentFieldsUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('resident_id')->unique();
+            $table->string('resident_id');
             $table->string('wechat_id')->unique();
             $table->string('wechat_name')->unique();
         });
