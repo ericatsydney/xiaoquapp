@@ -7,24 +7,27 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserTest extends TestCase
 {
     /**
-     * Test home page visiting.
-     *
-     * @return void
+     * Test the login submit button.
      */
-    public function testExample()
+    public function testLoginSubmit()
     {
-        $this->visit('/')
-          ->see('小区')
-          ->dontSee('Rails');
+        $this->visit('/auth/login')
+            ->type('eric.g.x.tan@gmail.com','email')
+            ->type('123456','password')
+            ->press('登录')
+            ->seePageIs('/admin');
     }
 
     /**
-     * Test the admin page visiting.
+     * Test the admin page visiting (authenticate).
      */
     public function testAdminPage()
     {
-        $this->visit('/admin')
-            ->see('authority');
+        $user = factory(App\User::class)->create();
+
+        $this->actingAs($user)
+            ->visit('/admin')
+            ->see('Dashboard');
     }
 
     /**
@@ -32,27 +35,17 @@ class UserTest extends TestCase
      */
     public function testRegisterInit()
     {
-        $this->visit('/')
-            ->see('注册');
+        $this->visit('/auth/register')
+            ->see('创建');
     }
 
-
-    /**
-     * Test the login page wording.
-     */
-    public function testLoginInit()
-    {
-        $this->visit('/')
-            ->see('登陆');
-    }
-
-
-    /**
-     * Test the login submit button.
-     */
-    public function testLoginSubmit()
-    {
-        $this->visit('/')
-            ->see('登陆');
-    }
+//
+//    /**
+//     * Test the login page wording.
+//     */
+//    public function testLoginInit()
+//    {
+//        $this->visit('/')
+//            ->see('登陆');
+//    }
 }
