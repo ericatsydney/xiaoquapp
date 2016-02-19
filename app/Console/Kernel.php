@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\WechatResource;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,7 +25,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        $schedule->call(function () {
+            $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxbaf45caa5c23134f&secret=404a2a9a33c016775fa48553b259cb2b';
+            $json = file_get_contents($url);
+            $data = json_decode($json);
+            $resource = WechatResource::first();
+            $resource->access_token = $data->access_token;
+            $resource->save();
+        })->hourly();
     }
 }

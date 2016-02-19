@@ -51,3 +51,5 @@ Route::post('resident/verify',  'ResidentController@verify');
 
 // Users routes
 Route::get('users/index',  'Auth\AuthController@index');
+
+Route::get('wechat-resource/index',  'WechatResourceController@index');
