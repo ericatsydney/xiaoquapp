@@ -31,7 +31,16 @@
         <!-- /.nav-second-level -->
       </li>
       <li>
-        <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+        <a href="#"><i class="fa fa-table fa-fw"></i> 消息管理<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/message/create">发送消息</a>
+          </li>
+          <li>
+            <a href="#">待定</a>
+          </li>
+        </ul>
+        <!-- /.nav-second-level -->
       </li>
       <li>
         <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>

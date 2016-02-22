@@ -37,5 +37,6 @@
 
   <!-- Custom Theme JavaScript -->
   <script src="{{ URL::asset('/js/sb-admin-2.js') }}"></script>
+  <script src="{{ URL::asset('/js/all.js') }}"></script>
 
 </head>

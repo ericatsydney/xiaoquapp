@@ -39,5 +39,32 @@ jQuery( document ).ready( function( $ ) {
     // Prevent the form from actually submitting in browser.
     return false;
   } );
+
+  $('#sendMessageForm').on('submit', function(e) {
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=APmGw_7pENYlE0q7ovSwoxk0ph8eyinXRs8azatx2WAZQKgHtkHcR_kxpQrysK6Rdgl1-4qhIKiWuIfeajDShMW7xeTlxnEo8-iaU604KTyiotpCSpY-WLN_W4Dn-8GSSZMaACAXER",
+      data: {
+      "articles": [
+        {
+          "thumb_media_id":"qI6_Ze_6PtV7svjolgs-rN6stStuHIjs9_DidOHaj0Q-mwvBelOXCFZiq2OsIU-p",
+          "author":"xxx",
+          "title":"Happy Day",
+          "content_source_url":"www.qq.com",
+          "content":"content",
+          "digest":"digest",
+          "show_cover_pic":1
+        }
+      ]
+    },
+      success: function(result){
+        console.log(result);
+      },
+      dataType: "json",
+      contentType : "application/json",
+      crossDomain: true,
+    });
+  });
 } );
 
