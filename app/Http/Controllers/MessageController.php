@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\WechatResource;
+use CURLFile;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -28,34 +29,56 @@ class MessageController extends Controller
   public function create()
   {
     $access_token = WechatResource::first()->access_token;
-    $type = 'image';
-    $filepath = 'SurfWaveBlue.jpg';
-    $filedata = array(
-      'media' => '@'.$filepath,
-    );
+//    $type = 'image';
+//    $filepath = 'SurfWaveBlue.jpg';
+//    $file = curl_file_create($filepath);
+//    dd($file);
+//    $filedata = array(
+//      'media' => curl_file_create($filepath),
+//    );
+//    $filedata = 'media=@SurfWaveBlue.jpg';
 //    $url = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=" . $access_token;
-    $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=" . $access_token
-    . '&type=' . $type;
+    $url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=" . $access_token;
+//    $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=" . $access_token
+//    . '&type=' . $type;
+//    $url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=" . $access_token;
+//    $filedata = array(
+//        "type" => 'image',
+//        "offset" => 0,
+//        "count" => 20
+//    );
+
 //    dd(print_r($filedata, true));
     $content = 'this is a test demo';
+//    $jsonArr = array(
+//      "articles" => array(
+//        array(
+//          "title" => 'dingdingdemo',
+////          "thumb_media_id" => 'xxxx',
+//          "author" => 'martin',
+//          "digest" => 'digest',
+//          "show_cover_pic" => 0,
+//          "content" => $content,
+//          "content_source_url" => 'https://www.baidu.com/',
+//        ),
+//      ),
+//    );
+
     $jsonArr = array(
-      "articles" => array(
-        array(
-          "title" => 'dingdingdemo',
-          "thumb_media_id" => 'xxxx',
-          "author" => 'martin',
-          "digest" => 'digest',
-          "show_cover_pic" => 0,
-          "content" => $content,
-          "content_source_url" => 'https://www.baidu.com/',
-        ),
+      'filter' => array(
+        "is_to_all" => true,
+      ),
+      "msgtype" => "text",
+      "text" => array(
+         "content" => 'Hello World',
       ),
     );
     $json3 = json_encode($jsonArr, JSON_UNESCAPED_UNICODE);
-//    dd($filepath);
-    $res = $this->https_request($url, $filedata);
+//    $json3 = $filedata;
+//    dd($json3);
+    $res = $this->https_request($url, $json3);
     $result = json_decode($res);
-    dd($result);
+    dd($res);
     return view('message.send', ['accessToken' => $access_token, 'pageHeaderText' => '消息管理', 'panelHeadingText' => '发送消息', 'contentType' => 'message']);
   }
 
