@@ -9,14 +9,14 @@ class UserTest extends TestCase
     /**
      * Test the login submit button.
      */
-    public function testLoginSubmit()
-    {
-        $this->visit('/auth/login')
-            ->type('eric.g.x.tan@gmail.com','email')
-            ->type('123456','password')
-            ->press('登录')
-            ->seePageIs('/admin');
-    }
+//    public function testLoginSubmit()
+//    {
+//        $this->visit('/auth/login')
+//            ->type('eric.g.x.tan@gmail.com','email')
+//            ->type('123456','password')
+//            ->press('登录')
+//            ->seePageIs('/admin');
+//    }
 
     /**
      * Test the admin page visiting (authenticate).
