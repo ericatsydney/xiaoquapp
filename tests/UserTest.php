@@ -27,7 +27,7 @@ class UserTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/admin')
-            ->see('Dashboard');
+            ->see('小区管理应用后台');
     }
 
     /**
