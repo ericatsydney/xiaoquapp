@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\WechatResource;
 use CURLFile;
+use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,11 +22,10 @@ class MessageController extends Controller
     //
   }
 
-  public function serve()
+  public function serve(Application $wechat)
   {
-    $wechat = app('wechat');
-//    return $wechat->user->lists();
-    return $wechat->material->lists('image');
+    return $wechat->user->lists();
+//    return $wechat->material->lists('image');
   }
   /**
    * Show the form for creating a new resource.
