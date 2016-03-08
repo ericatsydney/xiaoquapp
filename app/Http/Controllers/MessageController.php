@@ -21,6 +21,12 @@ class MessageController extends Controller
     //
   }
 
+  public function serve()
+  {
+    $wechat = app('wechat');
+//    return $wechat->user->lists();
+    return $wechat->material->lists('image');
+  }
   /**
    * Show the form for creating a new resource.
    *
@@ -29,41 +35,7 @@ class MessageController extends Controller
   public function create()
   {
     $access_token = WechatResource::first()->access_token;
-//    $type = 'image';
-//    $filepath = 'SurfWaveBlue.jpg';
-//    $file = curl_file_create($filepath);
-//    dd($file);
-//    $filedata = array(
-//      'media' => curl_file_create($filepath),
-//    );
-//    $filedata = 'media=@SurfWaveBlue.jpg';
-//    $url = "https://api.weixin.qq.com/cgi-bin/material/add_news?access_token=" . $access_token;
     $url = "https://api.weixin.qq.com/cgi-bin/message/mass/sendall?access_token=" . $access_token;
-//    $url = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=" . $access_token
-//    . '&type=' . $type;
-//    $url = "https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=" . $access_token;
-//    $filedata = array(
-//        "type" => 'image',
-//        "offset" => 0,
-//        "count" => 20
-//    );
-
-//    dd(print_r($filedata, true));
-    $content = 'this is a test demo';
-//    $jsonArr = array(
-//      "articles" => array(
-//        array(
-//          "title" => 'dingdingdemo',
-////          "thumb_media_id" => 'xxxx',
-//          "author" => 'martin',
-//          "digest" => 'digest',
-//          "show_cover_pic" => 0,
-//          "content" => $content,
-//          "content_source_url" => 'https://www.baidu.com/',
-//        ),
-//      ),
-//    );
-
     $jsonArr = array(
       'filter' => array(
         "is_to_all" => true,
@@ -74,12 +46,9 @@ class MessageController extends Controller
       ),
     );
     $json3 = json_encode($jsonArr, JSON_UNESCAPED_UNICODE);
-//    $json3 = $filedata;
-//    dd($json3);
     $res = $this->https_request($url, $json3);
     $result = json_decode($res);
     dd($res);
-    return view('message.send', ['accessToken' => $access_token, 'pageHeaderText' => '消息管理', 'panelHeadingText' => '发送消息', 'contentType' => 'message']);
   }
 
   /**

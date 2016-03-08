@@ -146,6 +146,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Customized service providers...
+         */
+        Overtrue\LaravelWechat\ServiceProvider::class,
     ],
 
     /*

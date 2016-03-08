@@ -53,3 +53,4 @@ Route::post('resident/verify',  'ResidentController@verify');
 Route::get('users/index',  'Auth\AuthController@index');
 
 Route::get('message/create',  'MessageController@create');
+Route::any('/wechat', 'MessageController@serve');
